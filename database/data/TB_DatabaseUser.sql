@@ -1,0 +1,24 @@
+INSERT INTO
+ `DB_Hice`.`TB_DatabaseUser`
+ (
+  `sUserDomain`,
+  `sUserName`
+ )
+VALUES
+ (
+  'localhost',
+  'root'
+ ),
+ (
+  'localhost',
+  'HICE_PHPSERVER'
+ ),
+ (
+  'localhost',
+  'HICE_CPPSERVER'
+ ),
+ (
+  'localhost',
+  'HICE_CSHARPSERVER'
+ )
+;
