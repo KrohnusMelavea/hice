@@ -1,12 +1,12 @@
 CREATE TRIGGER
- `DB_Hice`.`TG_GetCurrentDatabaseUserId`
+ `DB_Hice`.`TG_ChatMessageFileUpdate`
 AFTER UPDATE ON
- `DB_Hice`.`TB_ChatFile`
+ `DB_Hice`.`TB_ChatMessageFile`
 FOR EACH ROW
  INSERT INTO
-  `DB_Hice`.`TB_ChatFileHistory`
+  `DB_Hice`.`TB_ChatMessageFileHistory`
   (
-   `vChatFileId`,
+   `vChatMessageFileId`,
    `vFileId`,
    `sFileName`,
    `bIsDeleted`,
@@ -19,6 +19,6 @@ FOR EACH ROW
    NEW.`vFileId`,
    NEW.`sFileName`,
    NEW.`bIsDeleted`,
-   `DB_Hice`.`FN_GetCurretnDatabaseUserId`(),
+   `DB_Hice`.`FN_GetCurrentDatabaseUserId`(),
    IF(NEW.`bIsDeleted` = 0, 'u', 'd')
   )

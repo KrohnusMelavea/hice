@@ -1,12 +1,12 @@
 CREATE TABLE
- `DB_Hice`.`TB_ChatFileHistory`
+ `DB_Hice`.`TB_ChatMessageFileHistory`
 (
  `vId` 
   BINARY(16) 
   NOT NULL 
   DEFAULT(UUID_TO_BIN(UUID())),
 
- `vChatFileId` 
+ `vChatMessageFileId` 
   BINARY(16) 
   NOT NULL,
 
@@ -16,6 +16,10 @@ CREATE TABLE
  `sFileName`
   VARCHAR(255)
   NULL,
+
+ `bIsDeleted`
+  BOOLEAN
+  NOT NULL,
  
  `dtActionOn` 
   DATETIME 
@@ -30,30 +34,30 @@ CREATE TABLE
   DEFAULT('c'),
 
  CONSTRAINT 
-  `ChatFileHistory_PK` 
+  `ChatMessageFileHistory_PK` 
  PRIMARY KEY
  (
   `vId`
  ),
  CONSTRAINT 
-  `ChatFileHistory_ChatFile_FK` 
+  `ChatMessageFileHistory_ChatMessageFile_FK` 
  FOREIGN KEY 
  (
-  `vChatFileId`
+  `vChatMessageFileId`
  ) 
  REFERENCES 
-  `DB_Hice`.`TB_ChatFile`
+  `DB_Hice`.`TB_ChatMessageFile`
   (
    `vId`
   ),
  CONSTRAINT
-  `ChatFileHistory_File_FK`
+  `ChatMessageFileHistory_File_FK`
  FOREIGN KEY
  (
   `vFileId`
  )
  REFERENCES
-  `DB_Hice`.`TB_ChatFileHistory`
+  `DB_Hice`.`TB_File`
   (
    `vId`
   )

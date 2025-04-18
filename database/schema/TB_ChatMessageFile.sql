@@ -1,15 +1,14 @@
 CREATE TABLE
- `DB_Hice`.`TB_ChatFile`
+ `DB_Hice`.`TB_ChatMessageFile`
 (
  `vId` 
   BINARY(16) 
   NOT NULL 
   DEFAULT(UUID_TO_BIN(UUID())),
 
- `vChatId` 
+ `vChatMessageId` 
   BINARY(16) 
   NOT NULL,
-  
  `vFileId`
   BINARY(16)
   NOT NULL,
@@ -23,24 +22,24 @@ CREATE TABLE
   DEFAULT(0),
 
  CONSTRAINT 
-  `ChatFile_PK` 
+  `ChatMessageFile_PK` 
  PRIMARY KEY
  (
   `vId`
  ),
  CONSTRAINT 
-  `ChatFile_Chat_FK` 
+  `ChatMessageFile_ChatMessage_FK` 
  FOREIGN KEY
  (
-  `vChatId`
+  `vChatMessageId`
  ) 
  REFERENCES 
-  `DB_Hice`.`TB_Chat`
+  `DB_Hice`.`TB_ChatMessage`
   (
    `vId`
   ),
  CONSTRAINT
-  `ChatFile_File_FK`
+  `ChatMessageFile_File_FK`
  FOREIGN KEY
  (
   `vFileId`
