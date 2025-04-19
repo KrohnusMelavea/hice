@@ -20,6 +20,7 @@ schema_scripts = (
  "FN_GetCurrentDatabaseUserId.sql",
  "TB_User.sql",
  "TB_Session.sql",
+ "FN_Login.sql",
  "TB_File.sql",
  "TB_Property.sql",
  "TB_PropertyListing.sql",

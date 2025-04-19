@@ -7,16 +7,16 @@ CREATE FUNCTION
 BEGIN
  DECLARE 
   vDatabaseUserId 
-  BINARY(16);
+   BINARY(16);
  DECLARE 
   sUser 
-  CHAR(255);
+   CHAR(255);
  DECLARE 
   sUserDomain 
-  CHAR(255);
+   CHAR(255);
  DECLARE 
   sUserName 
-  CHAR(32);
+   CHAR(32);
  SET sUser = CURRENT_USER();
  SET sUserDomain = SUBSTRING_INDEX(sUser, '@', -1);
  SET sUserName = SUBSTRING_INDEX(sUser, '@', 1);
@@ -30,5 +30,5 @@ BEGIN
   `DB_Hice`.`TB_DatabaseUser`.`sUserName` = sUserName
  ;
  RETURN vDatabaseUserId;
- END;;
+END;;
 DELIMITER ;
