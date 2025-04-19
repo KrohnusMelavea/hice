@@ -26,7 +26,7 @@ CREATE TABLE
   NOT NULL,
 
  `cType` 
-  ENUM('u', 'r', 'a') 
+  ENUM('u', 'r', 's', 'a') 
   NOT NULL,
 
  CONSTRAINT 
