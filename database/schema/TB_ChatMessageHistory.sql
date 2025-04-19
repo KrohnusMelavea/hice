@@ -42,5 +42,16 @@ CREATE TABLE
   `DB_Hice`.`TB_ChatMessage`
   (
    `vId`
+  ),
+ CONSTRAINT
+  `ChatMessageHistory_DatabaseUser_FK`
+ FOREIGN KEY
+ (
+  `vActionBy`
+ )
+ REFERENCES
+  `DB_Hice`.`TB_DatabaseUser`
+  (
+   `vId`
   )
 )

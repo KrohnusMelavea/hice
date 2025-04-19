@@ -65,5 +65,16 @@ CREATE TABLE
   `DB_Hice`.`TB_Property`
   (
    `vId`
+  ),
+ CONSTRAINT
+  `PropertyHistory_DatabaseUser_FK`
+ FOREIGN KEY
+ (
+  `vActionBy`
+ )
+ REFERENCES
+  `DB_Hice`.`TB_DatabaseUser`
+  (
+   `vId`
   )
 )

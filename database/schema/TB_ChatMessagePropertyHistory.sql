@@ -39,7 +39,7 @@ CREATE TABLE
   `ChatMessagePropertyHistory_ChatMessageProperty_FK`
  FOREIGN KEY
  (
-  `vChatMessagepropertyId`
+  `vChatMessagePropertyId`
  )
  REFERENCES
   `DB_Hice`.`TB_ChatMessageProperty`
@@ -54,6 +54,17 @@ CREATE TABLE
  )
  REFERENCES
   `DB_Hice`.`TB_Property`
+  (
+   `vId`
+  ),
+ CONSTRAINT
+  `ChatMessagePropertyHistory_DatabaseUser_FK`
+ FOREIGN KEY
+ (
+  `vActionBy`
+ )
+ REFERENCES
+  `DB_Hice`.`TB_DatabaseUser`
   (
    `vId`
   )
