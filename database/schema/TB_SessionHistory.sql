@@ -25,17 +25,6 @@ CREATE TABLE
   `vId`
  ),
  CONSTRAINT 
-  `SessionHistory_Session_FK` 
- FOREIGN KEY 
- (
-  `vUserId`
- ) 
- REFERENCES 
-  `DB_Hice`.`TB_Session`
-  (
-   `vUserId`
-  ),
- CONSTRAINT 
   `SessionHistory_User_FK` 
  FOREIGN KEY 
  (
