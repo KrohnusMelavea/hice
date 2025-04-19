@@ -21,6 +21,7 @@ BEGIN
  DECLARE
   sUserPassword
    VARCHAR(255);
+ SET vSessionid = NULL;
  SET vUserId = NULL;
  SELECT
   `DB_Hice`.`TB_User`.`vId`,
@@ -38,20 +39,27 @@ BEGIN
  ELSE
   IF (sUserPassword = sPassword)
   THEN
-   SET vSessionId = UUID_TO_BIN(UUID());
    INSERT INTO
     `DB_Hice`.`TB_Session`
     (
-     `vId`,
      `vUserId`,
      `uIP`
     )
    VALUE
     (
-     vSessionId,
      vUserId,
      uIP
-    );
+    )
+   ON DUPLICATE KEY UPDATE
+    `DB_Hice`.`DB_Session`.`uIP` = uIP;
+   SELECT
+    `DB_Hice`.`TB_Session`.`vId`
+   INTO
+    vSessionId
+   FROM
+    `DB_Hice`.`TB_Session`
+   WHERE
+    `DB_Hice`.`TB_Session`.`vUserId` = vUserId;
    RETURN vSessionId;
   ELSE
    RETURN UUID_TO_BIN('00000000-0000-0000-0000-000000000000');
