@@ -16,7 +16,11 @@ CREATE TABLE
   DEFAULT(NOW()),
  `uActionAt` 
   INTEGER UNSIGNED 
-  NOT NULL, 
+  NOT NULL,
+ `cActionType`
+  ENUM('c', 'd')
+  NOT NULL
+  DEFAULT('c'),
 
  CONSTRAINT 
   `SessionHistory_PK` 

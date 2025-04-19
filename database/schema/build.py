@@ -21,6 +21,7 @@ schema_scripts = (
  "TB_User.sql",
  "TB_Session.sql",
  "FN_Login.sql",
+ "FN_Logout.sql",
  "TB_File.sql",
  "TB_Property.sql",
  "TB_PropertyListing.sql",
