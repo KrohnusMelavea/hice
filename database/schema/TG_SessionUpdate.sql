@@ -7,10 +7,12 @@ FOR EACH ROW
   `DB_Hice`.`TB_SessionHistory`
   (
    `vUserId`,
+   `dtInteraction`,
    `uActionAt`
   )
  VALUE
   (
    NEW.`vUserId`,
+   NEW.`dtInteraction`,
    NEW.`uIP`
   )

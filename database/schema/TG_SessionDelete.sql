@@ -7,12 +7,14 @@ FOR EACH ROW
   `DB_Hice`.`SessionHistory`
   (
    `vUserId`,
-   `uIP`,
+   `dtInteraction`,
+   `uActionAt`,
    `cActionType`
   )
  VALUE
   (
    OLD.`vUserId`,
+   OLD.`dtInteraction`,
    OLD.`uIP`,
    'd'
   )

@@ -13,6 +13,11 @@ CREATE TABLE
  `uIP` 
   INTEGER UNSIGNED 
   NOT NULL,
+ 
+ `dtInteraction`
+  DATETIME
+  NOT NULL
+  DEFAULT(NOW()),
 
  CONSTRAINT 
   `Session_PK` 

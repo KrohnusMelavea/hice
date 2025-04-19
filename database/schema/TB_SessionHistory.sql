@@ -9,6 +9,10 @@ CREATE TABLE
  `vUserId` 
   BINARY(16) 
   NOT NULL,
+ 
+ `dtInteraction`
+  DATETIME
+  NOT NULL,
 
  `dtActionOn` 
   DATETIME 
