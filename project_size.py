@@ -1,8 +1,9 @@
 import os
 
-folders = ("database",)
+folders = "database", "website", "build"
 
 file_extension_blacklist = ( ".png", )
+file_directory_blacklist = ( "__pycache__" )
 
 file_directories = [
  (
@@ -15,6 +16,7 @@ file_directories = [
  )
  for folder in folders 
   for directory, _, files in os.walk(folder)
+   if not any(directory_folder in file_directory_blacklist for directory_folder in directory.split("/") + directory.split("\\"))
 ]
 max_directory_length = max(map(len, (file_path[0] for file_path in file_directories)), default=0)
 max_file_lengths = [max(map(len, file_paths), default=0) for _, file_paths in file_directories]

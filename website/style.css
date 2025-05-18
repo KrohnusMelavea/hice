@@ -1,0 +1,11 @@
+.navigation-wrapper {
+ height: 75pt
+}
+
+#navigation-home-icon {
+ height: 100%
+}
+
+.navigation {
+ align-items: right;
+}
