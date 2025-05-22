@@ -51,7 +51,7 @@ BEGIN
      uIP
     )
    ON DUPLICATE KEY UPDATE
-    `DB_Hice`.`DB_Session`.`uIP` = uIP;
+    `DB_Hice`.`TB_Session`.`uIP` = uIP;
    SELECT
     `DB_Hice`.`TB_Session`.`vId`
    INTO

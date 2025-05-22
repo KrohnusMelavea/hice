@@ -11,8 +11,19 @@ function generate_index() {
 }
 
 echo generate_page(
- generate_header("Hice"),
- generate_body(generate_navigation(), generate_index())
+ generate_header(
+  "Hice",
+  [
+   "/styles/navigation.css"
+  ],
+  [
+   "/scripts/navigation.js"
+  ]
+ ),
+ generate_body(
+  generate_navigation(), 
+  generate_index()
+ )
 );
 
 ?>

@@ -1,0 +1,123 @@
+.house-listing {
+ display: grid;
+
+ grid-template-columns: repeat(3, 33.33%);
+ grid-template-rows: repeat(18, 5.56%);
+
+ background-color: grey;
+ border-radius: 2pt;
+}
+
+.house-listing-image {
+ grid-column: 1 / span 1;
+ grid-row: 1 / span 13;
+ 
+ border-radius: 2pt;
+ border: 2pt solid darkslategrey;
+}
+.house-listing-image-actual {
+ width: 100%;
+ height: 100%;
+ object-fit: contain;
+}
+.house-listing-address {
+ display: flex;
+
+ justify-content: center;
+ align-items: center;
+
+ font-size: 28pt;
+
+ grid-column: 2 / span 2;
+ grid-row: 1 / span 3;
+
+ background-color: rgba(211, 211, 211, 0.685);
+ margin: 1pt;
+ border-radius: 2pt;
+}
+.house-listing-surface-area {
+ display: flex;
+
+ align-items: center;
+
+ font-size: 24pt;
+
+ grid-column: 2 / span 2;
+ grid-row: 4 / span 2;
+
+ background: lightgrey;
+ margin: 1pt;
+ padding: 10pt;
+ border-radius: 2pt;
+}
+.house-listing-bedroom-count {
+ display: flex;
+
+ align-items: center;
+
+ font-size: 24pt;
+
+ grid-column: 2 / span 2;
+ grid-row: 6 / span 2;
+
+ background: lightgrey;
+ margin: 1pt;
+ padding: 10pt;
+ border-radius: 2pt;
+}
+.house-listing-bathroom-count {
+ display: flex;
+
+ align-items: center;
+
+ font-size: 24pt;
+ 
+ grid-column: 2 / span 2;
+ grid-row: 8 / span 2;
+
+ background: lightgrey;
+ margin: 1pt;
+ padding: 10pt;
+ border-radius: 2pt;
+}
+.house-listing-floor-count {
+ display: flex;
+
+ align-items: center;
+
+ font-size: 24pt;
+
+ grid-column: 2 / span 2;
+ grid-row: 10 / span 2;
+ 
+ background: lightgrey;
+ margin: 1pt;
+ padding: 10pt;
+ border-radius: 2pt;
+}
+.house-listing-price {
+ display: flex;
+
+ align-items: center;
+
+ font-size: 24pt;
+
+ grid-column: 2 / span 2;
+ grid-row: 12 / span 2;
+
+ background: lightgrey;
+ margin: 1pt;
+ padding: 10pt;
+ border-radius: 2pt;
+}
+.house-listing-description {
+ grid-column: 1 / span 3;
+ grid-row: 14 / span 5;
+
+ font-size: 18pt;
+
+ background-color: rgba(211, 211, 211, 0.685);
+ margin: 1pt;
+ padding: 15pt;
+ border-radius: 2pt;
+}

@@ -17,6 +17,10 @@ CREATE TABLE
   ENUM('s', 'r', 'a')
   NOT NULL,
 
+ `sDescription`
+  NVARCHAR(4000)
+  NULL,
+
  `bIsDeleted`
   BOOLEAN
   NOT NULL

@@ -1,0 +1,184 @@
+.registration-form-wrapper {
+ display: flex;
+
+ justify-content: center;
+}
+.registration-form {
+ display: grid;
+
+ width: 300pt;
+
+ grid-template-columns: repeat(10, 30pt);
+ grid-template-rows: 30pt 30pt 30pt 30pt 30pt 15pt;
+
+ background-color: grey;
+ border-radius: 2pt;
+ border: 2pt solid black;
+}
+.registration-form-firstname-label-wrapper {
+ display: flex;
+
+ align-items: center;
+
+ grid-column: 1 / span 3;
+ grid-row: 1 / span 1;
+
+ border-right: 1pt solid #727272;
+ border-bottom: 1pt solid #727272;
+}
+.registration-form-firstname-label {
+ padding: 10pt;
+}
+.registration-form-firstname-input-wrapper {
+ display: flex;
+
+ align-items: center;
+
+ grid-column: 4 / span 7;
+ grid-row: 1 / span 1;
+
+ border-left: 1pt solid #727272;
+ border-bottom: 1pt solid #727272;
+}
+.registration-form-firstname-input {
+ width: 100%;
+ margin: 5pt;
+ padding: 2pt;
+ background-color: lightgrey;
+ border-radius: 2pt;
+ border: 2pt solid darkslategrey;
+}
+.registration-form-lastname-label-wrapper {
+ display: flex;
+
+ align-items: center;
+
+ grid-column: 1 / span 3;
+ grid-row: 2 / span 1;
+
+ border-right: 1pt solid #727272;
+ border-top: 1pt solid #727272;
+ border-bottom: 1pt solid #727272;
+}
+.registration-form-lastname-label {
+ padding: 10pt;
+}
+.registration-form-lastname-input-wrapper {
+ display: flex;
+
+ align-items: center;
+
+ grid-column: 4 / span 7;
+ grid-row: 2 / span 1;
+
+ border-top: 1pt solid #727272;
+ border-left: 1pt solid #727272;
+ border-bottom: 1pt solid #727272;
+}
+.registration-form-lastname-input {
+ width: 100%;
+ margin: 5pt;
+ padding: 2pt;
+ background-color: lightgrey;
+ border-radius: 2pt;
+ border: 2pt solid darkslategrey;
+}
+.registration-form-username-label-wrapper {
+ display: flex;
+
+ align-items: center;
+
+ grid-column: 1 / span 3;
+ grid-row: 3 / span 1;
+
+ border-top: 1pt solid #727272;
+ border-right: 1pt solid #727272;
+ border-bottom: 1pt solid #727272;
+}
+.registration-form-username-label {
+ padding: 10pt;
+}
+.registration-form-username-input-wrapper {
+ display: flex;
+
+ align-items: center;
+
+ grid-column: 4 / span 7;
+ grid-row: 3 / span 1;
+
+ border-top: 1pt solid #727272;
+ border-left: 1pt solid #727272;
+ border-bottom: 1pt solid #727272;
+}
+.registration-form-username-input {
+ width: 100%;
+ margin: 5pt;
+ padding: 2pt;
+ background-color: lightgrey;
+ border-radius: 2pt;
+ border: 2pt solid darkslategrey;
+}
+.registration-form-password-label-wrapper {
+ display: flex;
+
+ align-items: center;
+
+ grid-column: 1 / span 3;
+ grid-row: 4 / span 1;
+
+ border-right: 1pt solid #727272;
+ border-top: 1pt solid #727272;
+ border-bottom: 1pt solid #727272;
+}
+.registration-form-password-label {
+ padding: 10pt;
+}
+.registration-form-password-input-wrapper {
+ display: flex;
+
+ align-items: center;
+
+ grid-column: 4 / span 7;
+ grid-row: 4 / span 1;
+
+ border-top: 1pt solid #727272;
+ border-left: 1pt solid #727272;
+ border-bottom: 1pt solid #727272;
+}
+.registration-form-password-input {
+ width: 100%;
+ margin: 5pt;
+ padding: 2pt;
+ background-color: lightgrey;
+ border-radius: 2pt;
+ border: 2pt solid darkslategrey;
+}
+.registration-form-submit-wrapper {
+ display: flex;
+
+ justify-content: center;
+ align-items: center;
+ 
+ grid-column: 1 / span 10;
+ grid-row: 5 / span 1;
+
+ border-top: 1pt solid #727272;
+ border-bottom: 1pt solid #727272;
+}
+.registration-form-submit {
+ width: 50%;
+
+ margin: 4pt;
+
+ background-color: lightgrey;
+ border-radius: 2pt;
+}
+.registration-form-registration-wrapper {
+ display: flex;
+
+ justify-content: center;
+ align-items: center;
+
+ grid-column: 3 / span 6;
+ grid-row: 6 / span 1;
+}

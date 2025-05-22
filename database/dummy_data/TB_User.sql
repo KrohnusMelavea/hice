@@ -31,7 +31,7 @@ VALUES
   'Doe',
   'john.doe@gmail.com',
   '-JohnDoe2User_',
-  'r',
+  'r'
  ),
  (
   0xa7654ef8cf714c7497231ce21dd0cabe,
@@ -40,4 +40,4 @@ VALUES
   'jane.deere@gmail.com',
   '-JaneDeere3User_',
   'a'
- ),
+ );

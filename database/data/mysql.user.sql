@@ -2,11 +2,86 @@ CREATE USER IF NOT EXISTS
  'HICE_PHPSERVER'@'localhost'
 IDENTIFIED BY
  'Q=.zZ|yPlE3R_5Fa78w~qi>LGJd%fHv+';
+GRANT
+ INSERT,
+ SELECT,
+ UPDATE
+ON
+ `DB_Hice`.*
+TO
+ 'HICE_PHPSERVER'@'localhost';
+GRANT
+ EXECUTE
+ON
+ PROCEDURE
+  `DB_Hice`.`SP_GetPropertyListingsByFilter`
+TO
+ 'HICE_PHPSERVER'@'localhost';
+GRANT
+ EXECUTE
+ON
+ PROCEDURE
+  `DB_Hice`.`SP_GetPropertyListingById`
+TO
+ 'HICE_PHPSERVER'@'localhost';
+GRANT
+ EXECUTE
+ON
+ PROCEDURE
+  `DB_Hice`.`SP_GetUserBySessionId`
+TO
+ 'HICE_PHPSERVER'@'localhost';
+GRANT
+ EXECUTE
+ON
+ FUNCTION
+  `DB_Hice`.`FN_Login`
+TO
+ 'HICE_PHPSERVER'@'localhost';
+GRANT
+ EXECUTE
+ON
+ FUNCTION
+  `DB_Hice`.`FN_Logout`
+TO
+ 'HICE_PHPSERVER'@'localhost';
+GRANT
+ EXECUTE
+ON
+ FUNCTION
+  `DB_Hice`.`FN_Register`
+TO
+ 'HICE_PHPSERVER'@'localhost';
+GRANT
+ EXECUTE
+ON
+ FUNCTION
+  `DB_Hice`.`FN_ValidateAndExtendSession`
+TO
+ 'HICE_PHPSERVER'@'localhost';
+
 CREATE USER IF NOT EXISTS
  'HICE_CPPSERVER'@'localhost'
 IDENTIFIED BY
  '%5u?!g<T;fWY9L}V{QyvPs6h^1JNGtx4';
+GRANT
+ INSERT,
+ SELECT,
+ UPDATE
+ON
+ `DB_Hice`.*
+TO
+ 'HICE_CPPSERVER'@'localhost';
+
 CREATE USER IF NOT EXISTS
  'HICE_CSHARPSERVER'@'localhost'
 IDENTIFIED BY
  'Lx!A0%,<2Svj6Xmd3=iVME>8?gB_51Zr';
+GRANT
+ INSERT,
+ SELECT,
+ UPDATE
+ON
+ `DB_Hice`.*
+TO
+ 'HICE_CSHARPSERVER'@'localhost';

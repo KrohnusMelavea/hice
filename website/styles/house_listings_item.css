@@ -1,0 +1,73 @@
+.house-listings-item {
+ display: grid;
+
+ width: 66%;
+ margin-left: 17%;
+ margin-bottom: 5pt;
+ 
+ grid-template-columns: repeat(3, 33.33%);
+ grid-template-rows: repeat(7, 14.29%);
+
+ background-color: grey;
+ border-radius: 5pt;
+ border: 2pt black solid;
+
+ cursor: pointer;
+}
+
+.house-listing-image {
+ grid-column: 1 / span 1;
+ grid-row: 1 / span 7;
+
+ border-radius: 2pt;
+ border: 2pt solid darkslategray;
+
+ cursor: pointer;
+}
+.house-listing-image-actual {
+ width: 100%;
+ height: 100%;
+ object-fit: contain;
+
+ cursor: pointer;
+}
+.house-listing-address {
+ display: flex;
+
+ justify-content: center;
+ align-items: center;
+
+ font-size: 24pt;
+
+ grid-column: 2 / span 2;
+ grid-row: 1 / span 1;
+
+ background-color: rgba(211, 211, 211, 0.685);
+ margin: 1pt;
+ border-radius: 2pt;
+ 
+ cursor: pointer;
+}
+.house-listing-description {
+ grid-column: 2 / span 2;
+ grid-row: 2 / span 4;
+
+ font-size: 16pt;
+
+ background-color: lightgrey;
+ margin: 1pt;
+ padding: 5pt;
+ border-radius: 2pt;
+
+ cursor: pointer;
+}
+.house-listing-details {
+ grid-column: 2 / span 2;
+ grid-row: 6 / span 2;
+
+ background-color: rgba(211, 211, 211, 0.685);
+ margin: 1pt;
+ border-radius: 2pt;
+
+ cursor: pointer;
+}

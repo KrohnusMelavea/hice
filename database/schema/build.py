@@ -18,10 +18,16 @@ def read_dummy_data_script(file_name:str) -> str:
 schema_scripts = (
  "TB_DatabaseUser.sql",
  "FN_GetCurrentDatabaseUserId.sql",
+ "FN_PercentageOfWordsInString.sql",
+ "SP_GetPropertyListingsByFilter.sql",
+ "SP_GetPropertyListingById.sql",
+ "SP_GetUserBySessionId.sql",
+ "SP_GetChatsBySessionId.sql",
  "TB_User.sql",
  "TB_Session.sql",
  "FN_Login.sql",
  "FN_Logout.sql",
+ "FN_Register.sql",
  "FN_ValidateAndExtendSession.sql",
  "TB_File.sql",
  "TB_Property.sql",
@@ -55,8 +61,14 @@ schema_scripts = (
  "TG_ChatMessagePropertyUpdate.sql",
 )
 data_scripts = (
- "mysql.user.sql",
- "TB_DatabaseUser.sql"
+ #"mysql.user.sql",
+ "TB_DatabaseUser.sql",
+ "TB_User.sql"
+)
+dummy_data_scripts = (
+ "TB_User.sql",
+ "TB_Property.sql",
+ "TB_PropertyListing.sql"
 )
 
 schema_connection = mysql.connector.Connect(
@@ -67,8 +79,9 @@ schema_connection = mysql.connector.Connect(
 schema_connection.cmd_query("DROP DATABASE IF EXISTS DB_Hice")
 schema_connection.cmd_query("CREATE DATABASE DB_Hice CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci'")
 schema_connection.cmd_init_db("DB_Hice")
-schema_execution_start = time.time()
 cursor = schema_connection.cursor()
+
+schema_execution_start = time.time()
 for script in schema_scripts:
  try:
   start_execute_time = time.time()
@@ -76,12 +89,10 @@ for script in schema_scripts:
   print(f"Executed Schema Script (\"{script}\"): {int((time.time() - start_execute_time) * 1000)}ms")
  except Exception as error:
   print(f"Failed to Execute Schema Script (\"{script}\"):\n{error}")
-cursor.close()
+schema_connection.commit()
 print(f"Total Schema Execution Time: {int((time.time() - schema_execution_start) * 1000)}ms")
 
 data_execution_start = time.time()
-schema_connection.start_transaction()
-cursor = schema_connection.cursor()
 for script in data_scripts:
  try:
   start_execute_time = time.time()
@@ -89,8 +100,19 @@ for script in data_scripts:
   print(f"Executed Data Script (\"{script}\"): {int((time.time() - start_execute_time) * 1000)}ms")
  except Exception as error:
   print(f"Failed to Execute Data Script (\"{script}\"):\n{error}")
-schema_connection.rollback()
+schema_connection.commit()
 print(f"Total Data Execution Time: {int((time.time() - data_execution_start) * 1000)}ms")
+
+dummy_data_execution_start = time.time()
+for script in dummy_data_scripts:
+ try:
+  start_execute_time = time.time()
+  cursor.execute(read_dummy_data_script(script))
+  print(f"Executed Dummy Data Script (\"{script}\"): {int((time.time() - start_execute_time) * 1000)}ms")
+ except Exception as error:
+  print(f"Failed to Execute Dummy Data Script (\"{script}\"):\n{error}")
+schema_connection.commit()
+print(f"Total Dummy Data Execution Time: {int((time.time() - dummy_data_execution_start) * 1000)}ms")
 
 schema_connection.disconnect()
 schema_connection.close()
