@@ -3,7 +3,7 @@
 class house_listing {
  public string $id;
  public string $address;
- public string $description;
+ public ?string $description;
  public int $surface_area;
  public int $bedroom_count;
  public int $bathroom_count;
@@ -13,7 +13,7 @@ class house_listing {
  public function __construct(
   string $id,
   string $address,
-  string $description,
+  ?string $description,
   int $surface_area,
   int $bedroom_count,
   int $bathroom_count,

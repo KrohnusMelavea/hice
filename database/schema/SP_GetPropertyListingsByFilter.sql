@@ -1,9 +1,9 @@
 DELIMITER ;;
+
 CREATE PROCEDURE
  `DB_Hice`.`SP_GetPropertyListingsByFilter`
  (
-  sSearchPhrase 
-   NVARCHAR(255)
+  sSearchPhrase NVARCHAR(255)
  )
 BEGIN
  SELECT
@@ -17,7 +17,12 @@ BEGIN
   `DB_Hice`.`TB_Property` ON
    `DB_Hice`.`TB_Property`.`vId` = `DB_Hice`.`TB_PropertyListing`.`vPropertyId`
  ORDER BY
-  `DB_Hice`.`FN_PercentageOfWordsInString`(sSearchPhrase, `DB_Hice`.`TB_Property`.`sAddress`)
+  `DB_Hice`.`FN_PercentageOfWordsInString`
+  (
+   sSearchPhrase, 
+   `DB_Hice`.`TB_Property`.`sAddress`
+  )
   DESC;
 END;;
+
 DELIMITER ;

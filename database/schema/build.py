@@ -1,3 +1,4 @@
+import os
 import time
 import mysql.connector
 
@@ -13,53 +14,47 @@ def read_schema_script(file_name:str) -> str:
 def read_data_script(file_name:str) -> str:
  return read_file(f"{DATA_PATH}{file_name}") 
 def read_dummy_data_script(file_name:str) -> str:
- return read_file(f"{DUMMY_DATA_PATH}{file_name}") 
+ return read_file(f"{DUMMY_DATA_PATH}{file_name}")
 
-schema_scripts = (
- "TB_DatabaseUser.sql",
- "FN_GetCurrentDatabaseUserId.sql",
- "FN_PercentageOfWordsInString.sql",
- "SP_GetPropertyListingsByFilter.sql",
- "SP_GetPropertyListingById.sql",
- "SP_GetUserBySessionId.sql",
- "SP_GetChatsBySessionId.sql",
- "TB_User.sql",
- "TB_Session.sql",
- "FN_Login.sql",
- "FN_Logout.sql",
- "FN_Register.sql",
- "FN_ValidateAndExtendSession.sql",
- "TB_File.sql",
- "TB_Property.sql",
- "TB_PropertyListing.sql",
- "TB_PropertySale.sql",
- "TB_Chat.sql",
- "TB_ChatMessage.sql",
- "TB_ChatMessageFile.sql",
- "TB_ChatMessageProperty.sql",
- "TB_UserHistory.sql",
- "TB_SessionHistory.sql",
- "TB_PropertyHistory.sql",
- "TB_PropertyListingHistory.sql",
- "TB_ChatMessageHistory.sql",
- "TB_ChatMessageFileHistory.sql",
- "TB_ChatMessagePropertyHistory.sql",
- "TG_UserInsert.sql",
- "TG_UserUpdate.sql",
- "TG_SessionInsert.sql",
- "TG_SessionUpdate.sql",
- "TG_PropertyInsert.sql",
- "TG_PropertyUpdate.sql",
- "TG_PropertyListingInsert.sql",
- "TG_PropertyListingUpdate.sql",
- "TG_PropertySaleInsert.sql",
- "TG_ChatMessageInsert.sql",
- "TG_ChatMessageUpdate.sql",
- "TG_ChatMessageFileInsert.sql",
- "TG_ChatMessageFileUpdate.sql",
- "TG_ChatMessagePropertyInsert.sql",
- "TG_ChatMessagePropertyUpdate.sql",
-)
+def get_schema_script_prefix_ranking(schema_script_name: str) -> int:
+ SCHEMA_SCRIPT_PREFIXES = "TB_", "FN_", "SP_", "TG_"
+ return sum(
+  index * schema_script_name.startswith(schema_script_prefix) 
+  for index, schema_script_prefix in enumerate(SCHEMA_SCRIPT_PREFIXES)
+ )
+
+def get_script_dependencies(schema_script_names: list[str], schema_scripts: list[str]) -> list[list[int]]:
+ return [
+  [
+   script_script_name_index
+   for script_script_name_index, schema_script_name in enumerate(schema_script_names)
+   if f"`{schema_script_name.split('.')[0]}`" in schema_script and schema_script_index != script_script_name_index
+  ]
+  for schema_script_index, schema_script in enumerate(schema_scripts)
+ ]
+
+def is_all_schema_script_dependencies_met(schema_script_execution_order: list[int], schema_script_dependencies: list[int]) -> bool:
+ return sum(
+  1 
+  for schema_script_dependency in schema_script_dependencies 
+  if schema_script_dependency in schema_script_execution_order
+ ) == len(schema_script_dependencies) 
+ 
+def get_script_execution_order(schema_script_names: list[str], schema_scripts_dependencies: list[list[str]]) -> list[int]:
+ schema_script_execution_order: list[int] = []
+ while len(schema_script_execution_order) != len(schema_script_names):
+  before_length = len(schema_script_execution_order)
+  for index, schema_script_dependencies in enumerate(schema_scripts_dependencies):
+   if index not in schema_script_execution_order and is_all_schema_script_dependencies_met(schema_script_execution_order, schema_script_dependencies):
+    schema_script_execution_order.append(index)
+  if len(schema_script_execution_order) == before_length:
+   print("No progress after iteration. Quitting.")
+   break
+ 
+ return schema_script_execution_order
+
+schema_script_names = [file_name for file_name in os.listdir("database/schema") if file_name.endswith(".sql")]
+
 data_scripts = (
  #"mysql.user.sql",
  "TB_DatabaseUser.sql",
@@ -70,6 +65,15 @@ dummy_data_scripts = (
  "TB_Property.sql",
  "TB_PropertyListing.sql"
 )
+
+schema_scripts = [
+ read_schema_script(schema_script_name) 
+ for schema_script_name in schema_script_names
+]
+schema_script_dependencies = get_script_dependencies(schema_script_names, schema_scripts)
+schema_script_execution_order = get_script_execution_order(schema_script_names, schema_script_dependencies)
+
+schema_script_names = [schema_script_names[index] for index in schema_script_execution_order]
 
 schema_connection = mysql.connector.Connect(
  host="127.0.0.1",
@@ -82,7 +86,7 @@ schema_connection.cmd_init_db("DB_Hice")
 cursor = schema_connection.cursor()
 
 schema_execution_start = time.time()
-for script in schema_scripts:
+for script in schema_script_names:
  try:
   start_execute_time = time.time()
   cursor.execute(read_schema_script(script))

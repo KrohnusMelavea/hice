@@ -4,9 +4,9 @@ class house_listings_item {
  public string $id;
  public string $address;
  public int $price;
- public string $description;
+ public ?string $description;
 
- public function __construct(string $id, string $address, string $price, string $description) {
+ public function __construct(string $id, string $address, string $price, ?string $description) {
   $this->id = $id;
   $this->address = $address;
   $this->price = $price;

@@ -2,8 +2,7 @@ DELIMITER ;;
 CREATE PROCEDURE
  `DB_Hice`.`SP_GetUserBySessionId`
  (
-  vSessionId
-   BINARY(16)
+  vSessionId BINARY(16)
  )
 BEGIN
  SELECT
@@ -17,6 +16,8 @@ BEGIN
   `DB_Hice`.`TB_Session` ON
    `DB_Hice`.`TB_Session`.`vUserId` = `DB_Hice`.`TB_User`.`vId`
  WHERE
+  NOT `DB_User`.`TB_User`.`bIsDeleted`
+   AND
   `DB_Hice`.`TB_Session`.`vId` = vSessionId;
 END;;
 DELIMITER ;

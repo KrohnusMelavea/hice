@@ -1,26 +1,14 @@
 CREATE TABLE
  `DB_Hice`.`TB_ChatMessage`
 (
- `vId` 
-  BINARY(16) 
-  NOT NULL 
-  DEFAULT(UUID_TO_BIN(UUID())),
+ `vId`        BINARY(16)     NOT NULL DEFAULT(UUID_TO_BIN(UUID())),
 
- `vChatId` 
-  BINARY(16) 
-  NOT NULL,
- `vUserId` 
-  BINARY(16) 
-  NOT NULL,
+ `vChatId`    BINARY(16)     NOT NULL,
+ `vUserId`    BINARY(16)     NOT NULL,
 
- `sMessage` 
-  NVARCHAR(4000) 
-  NOT NULL,
+ `sMessage`   NVARCHAR(4000) NOT NULL,
 
- `bIsDeleted`
-  BOOLEAN
-  NOT NULL
-  DEFAULT(0),
+ `bIsDeleted` BOOLEAN        NOT NULL DEFAULT(0),
 
  CONSTRAINT 
   `ChatMessage_PK` 

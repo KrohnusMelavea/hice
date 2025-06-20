@@ -1,22 +1,12 @@
 CREATE TABLE 
  `DB_Hice`.`TB_Chat`
 (
- `vId` 
-  BINARY(16) 
-  NOT NULL 
-  DEFAULT(UUID_TO_BIN(UUID())),
+ `vId` BINARY(16) NOT NULL DEFAULT(UUID_TO_BIN(UUID())),
 
- `vUserId` 
-  BINARY(16) 
-  NOT NULL,
- `vRealtorId` 
-  BINARY(16) 
-  NULL,
+ `vUserId` BINARY(16) NOT NULL,
+ `vRealtorId` BINARY(16) NULL,
 
- `bIsDeleted` 
-  BOOLEAN 
-  NOT NULL 
-  DEFAULT(0),
+ `bIsDeleted` BOOLEAN NOT NULL DEFAULT(0),
 
  CONSTRAINT 
   `Chat_PK` 

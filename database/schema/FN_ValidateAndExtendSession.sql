@@ -1,25 +1,17 @@
 DELIMITER ;;
+
 CREATE FUNCTION
  `DB_Hice`.`FN_ValidateAndExtendSession`
  (
-  vSessionId
-   BINARY(16)
+  vSessionId BINARY(16)
  )
  RETURNS INT
  READS SQL DATA
 BEGIN
- DECLARE
-  dtInteraction
-  DATETIME;
- SET dtInteraction = NULL;
- SELECT 
-  `DB_Hice`.`TB_Session`.`dtInteraction`
- INTO
-  dtInteraction
- FROM
-  `DB_Hice`.`TB_Session`
- WHERE
-  `DB_Hice`.`TB_Session`.`vId` = vSessionId;
+ DECLARE dtInteraction DATETIME DEFAULT NULL;
+
+ SET dtInteraction = `DB_Hice`.`FN_GetMostRecentSessionInteractionDateTime`(vSessionId);
+
  IF (dtInteraction = NULL)
  THEN
   RETURN 1; -- NO SESSION
@@ -42,4 +34,5 @@ BEGIN
   END IF;
  END IF;
 END;;
+
 DELIMITER ;

@@ -1,9 +1,10 @@
 DELIMITER ;;
 
 CREATE PROCEDURE
- `DB_Hice`.`SP_GetPropertyListingById`
+ `DB_Hice`.`SP_GetPropertyListingByIdIfSessionUserOwned`
  (
-  vId BINARY(16)
+  vId        BINARY(16),
+  vSessionId BINARY(16)
  )
 BEGIN
  SELECT
@@ -20,12 +21,22 @@ BEGIN
  INNER JOIN
   `DB_Hice`.`TB_PropertyListing` ON
    `DB_Hice`.`TB_PropertyListing`.`vPropertyId` = `DB_Hice`.`TB_Property`.`vId`
+ INNER JOIN
+  `DB_Hice`.`TB_PropertySale` ON
+   `DB_Hice`.`TB_PropertySale`.`vPropertyListingId` = `DB_Hice`.`TB_PropertyListing`.`vId`
+ INNER JOIN
+  `DB_Hice`.`TB_Session` ON
+   `DB_Hice`.`TB_Session`.`vId` = vSessionid
  WHERE
   NOT `DB_Hice`.`TB_Property`.`bIsDeleted`
    AND
-  NOT `DB_Hice`.`TB_PropertyListing`.`bIsDeleted`
+  `DB_Hice`.`TB_PropertyListing`.`bIsDeleted`
    AND
-  `DB_Hice`.`TB_PropertyListing`.`vId` = vId;
+  NOT `DB_Hice`.`TB_PropertySale`.`bIsDeleted`
+   AND
+  `DB_Hice`.`TB_PropertyListing`.`vId` = vId
+   AND
+  `DB_Hice`.`TB_PropertySale`.`vBuyerUserId` = `DB_Hice`.`TB_Session`.`vUserId`;
 END;;
 
 DELIMITER ;

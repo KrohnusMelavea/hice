@@ -28,6 +28,13 @@ GRANT
  EXECUTE
 ON
  PROCEDURE
+  `DB_Hice`.`SP_GetPropertyListingByIdIfSessionUserOwned`
+TO
+ 'HICE_PHPSERVER'@'localhost';
+GRANT
+ EXECUTE
+ON
+ PROCEDURE
   `DB_Hice`.`SP_GetUserBySessionId`
 TO
  'HICE_PHPSERVER'@'localhost';
