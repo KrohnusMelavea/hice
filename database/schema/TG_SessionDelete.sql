@@ -4,7 +4,7 @@ AFTER DELETE ON
  `DB_Hice`.`TB_Session`
 FOR EACH ROW
  INSERT INTO
-  `DB_Hice`.`SessionHistory`
+  `DB_Hice`.`TB_SessionHistory`
   (
    `vUserId`,
    `dtInteraction`,

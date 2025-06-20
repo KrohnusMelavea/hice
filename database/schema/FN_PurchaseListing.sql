@@ -12,10 +12,7 @@ BEGIN
  DECLARE vPropertySaleId             BINARY(16);
  DECLARE bIsPropertyListingAvailable BOOLEAN;
 
- SET bIsPropertyListingAvailable = `DB_Hice`.`FN_IsPropertyListingAvailable`
- (
-  vPropertyListingId
- );
+ SET bIsPropertyListingAvailable = `DB_Hice`.`FN_IsPropertyListingAvailable`(vPropertyListingId);
  IF (NOT bIsPropertyListingAvailable)
  THEN
   RETURN NULL;
@@ -41,7 +38,7 @@ BEGIN
   (
    vPropertySaleId,
    vPropertyListingId,
-   `DB_Hice`.`FN_GetSessionUserId`(vSessionUserId)
+   `DB_Hice`.`FN_GetSessionUserId`(vSessionId)
   );
   RETURN vPropertySaleId;
  END;

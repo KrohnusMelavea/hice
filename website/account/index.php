@@ -29,9 +29,10 @@ function generate_index() {
  }
  else {
   $user = get_user_by_session_id($connection, bin2hex($_SESSION["id"]));
-  // if ($user == null) {
-  //  unset($_SESSION["id"]);
-  // }
+  if ($user == null) {
+   unset($_SESSION["id"]);
+   header("Location: /login");
+  }
   $connection->close();
   $template = file_get_contents("$_SERVER[DOCUMENT_ROOT]/account/index.html");
   return sprintf(

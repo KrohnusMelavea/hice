@@ -16,6 +16,8 @@ BEGIN
  INNER JOIN
   `DB_Hice`.`TB_Property` ON
    `DB_Hice`.`TB_Property`.`vId` = `DB_Hice`.`TB_PropertyListing`.`vPropertyId`
+ WHERE
+  NOT `DB_Hice`.`TB_PropertyListing`.`bIsDeleted`
  ORDER BY
   `DB_Hice`.`FN_PercentageOfWordsInString`
   (

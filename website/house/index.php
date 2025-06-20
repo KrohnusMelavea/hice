@@ -35,8 +35,8 @@ if (!isset($_GET["id"])) {
     "/styles/house_listing.css"
    ],
    [
-    "/scripts/navigation.js",
-    "/scripts/house_listing.js"
+    "script.js",
+    "/scripts/navigation.js"
    ]
   ),
   generate_body(

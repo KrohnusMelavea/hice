@@ -66,6 +66,13 @@ ON
   `DB_Hice`.`FN_ValidateAndExtendSession`
 TO
  'HICE_PHPSERVER'@'localhost';
+GRANT
+ EXECUTE
+ON
+ FUNCTION
+  `DB_Hice`.`FN_PurchaseListing`
+TO
+ 'HICE_PHPSERVER'@'localhost';
 
 CREATE USER IF NOT EXISTS
  'HICE_CPPSERVER'@'localhost'

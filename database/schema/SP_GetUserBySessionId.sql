@@ -16,7 +16,7 @@ BEGIN
   `DB_Hice`.`TB_Session` ON
    `DB_Hice`.`TB_Session`.`vUserId` = `DB_Hice`.`TB_User`.`vId`
  WHERE
-  NOT `DB_User`.`TB_User`.`bIsDeleted`
+  NOT `DB_Hice`.`TB_User`.`bIsDeleted`
    AND
   `DB_Hice`.`TB_Session`.`vId` = vSessionId;
 END;;

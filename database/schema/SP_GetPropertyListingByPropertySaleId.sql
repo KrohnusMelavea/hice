@@ -34,7 +34,7 @@ BEGIN
    AND
   NOT `DB_Hice`.`TB_PropertySale`.`bIsDeleted`
    AND
-  `DB_Hice`.`TB_PropertyListing`.`vId` = vId
+  `DB_Hice`.`TB_PropertySale`.`vId` = vId
    AND
   `DB_Hice`.`TB_PropertySale`.`vBuyerUserId` = `DB_Hice`.`TB_Session`.`vUserId`;
 END;;

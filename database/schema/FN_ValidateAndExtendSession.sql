@@ -12,7 +12,7 @@ BEGIN
 
  SET dtInteraction = `DB_Hice`.`FN_GetMostRecentSessionInteractionDateTime`(vSessionId);
 
- IF (dtInteraction = NULL)
+ IF (dtInteraction IS NULL)
  THEN
   RETURN 1; -- NO SESSION
  ELSE

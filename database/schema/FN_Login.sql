@@ -25,10 +25,9 @@ BEGIN
  WHERE
   NOT `DB_Hice`.`TB_User`.`bIsDeleted`
    AND
-  `DB_Hice`.`TB_User`.`sEmail` = sEmail
- ;
+  `DB_Hice`.`TB_User`.`sEmail` = sEmail;
   
- IF (vUserId = NULL)
+ IF (vUserId IS NULL)
  THEN
   RETURN NULL;
  ELSE
@@ -48,7 +47,7 @@ BEGIN
    ON DUPLICATE KEY UPDATE
     `DB_Hice`.`TB_Session`.`uIP` = uIP;
    
-   SET vSessionId = `DB_Hice`.`FN_GetSessionUserId`(vUserId);
+   SET vSessionId = `DB_Hice`.`FN_GetUserSessionId`(vUserId);
 
    RETURN vSessionId;
   ELSE
