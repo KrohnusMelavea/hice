@@ -1,5 +1,8 @@
 <?php
 
+require_once("functions/validate_and_extend_session.php");
+require_once("util/connect_to_localhost.php");
+
 function generate_index() {
  $connection = connect_to_localhost();
  if (!$connection) {

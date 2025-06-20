@@ -73,6 +73,13 @@ ON
   `DB_Hice`.`FN_PurchaseListing`
 TO
  'HICE_PHPSERVER'@'localhost';
+GRANT
+ EXECUTE
+ON
+ PROCEDURE
+  `DB_Hice`.`SP_GetPropertyListingsBySessionId`
+TO
+ 'HICE_PHPSERVER'@'localhost';
 
 CREATE USER IF NOT EXISTS
  'HICE_CPPSERVER'@'localhost'
