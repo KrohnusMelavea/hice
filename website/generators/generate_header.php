@@ -10,7 +10,7 @@ function generate_header(string $title, $styles = [], $scripts = []) {
   $title,
   generate_styles($styles),
   generate_scripts($scripts)
-);
+ );
 }
 
 ?>

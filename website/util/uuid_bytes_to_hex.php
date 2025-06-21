@@ -1,24 +1,7 @@
 <?php
 
 function uuid_string_to_hex(string $bytes) {
- $HEX_CODES = [
-  '0',
-  '1',
-  '2',
-  '3',
-  '4',
-  '5',
-  '6',
-  '7',
-  '8',
-  '9',
-  'a',
-  'b',
-  'c',
-  'd',
-  'e',
-  'f'
- ];
+ $HEX_CODES = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
 
  return 
   $HEX_CODES[ord($bytes[ 0]) >> 4] . $HEX_CODES[ord($bytes[ 0]) & 15] .

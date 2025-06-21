@@ -1,33 +1,16 @@
 CREATE TABLE 
  `DB_Hice`.`TB_User`
 (
- `vId` 
-  BINARY(16) 
-  NOT NULL 
-  DEFAULT(UUID_TO_BIN(UUID())),
+ `vId`        BINARY(16)               NOT NULL DEFAULT(UUID_TO_BIN(UUID())),
 
- `sFirstName` 
-  NVARCHAR(64) 
-  NOT NULL,
- `sLastName` 
-  NVARCHAR(64) 
-  NOT NULL,
+ `sFirstName` NVARCHAR(64)             NOT NULL,
+ `sLastName`  NVARCHAR(64)             NOT NULL,
+ `sEmail`     VARCHAR(255)             NOT NULL,
+ `sPassword`  VARCHAR(255)             NOT NULL,
 
- `bIsDeleted` 
-  BOOLEAN 
-  NOT NULL 
-  DEFAULT(0),
+ `cType`      ENUM('u', 'r', 's', 'a') NOT NULL DEFAULT('u'),
 
- `sEmail` 
-  VARCHAR(255)
-  NOT NULL,
- `sPassword` 
-  VARCHAR(255) 
-  NOT NULL,
-
- `cType` 
-  ENUM('u', 'r', 's', 'a') 
-  NOT NULL,
+ `bIsDeleted` BOOLEAN                  NOT NULL DEFAULT(0),
 
  CONSTRAINT 
   `User_PK` 

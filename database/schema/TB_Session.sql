@@ -1,39 +1,29 @@
 CREATE TABLE 
  `DB_Hice`.`TB_Session`
 (
- `vId` 
-  BINARY(16) 
-  NOT NULL 
-  DEFAULT(UUID_TO_BIN(UUID())),
+ `vId`           BINARY(16)       NOT NULL DEFAULT(UUID_TO_BIN(UUID())),
 
- `vUserId` 
-  BINARY(16) 
-  NOT NULL,
+ `vUserId`       BINARY(16)       NOT NULL,
 
- `uIP` 
-  INTEGER UNSIGNED 
-  NOT NULL,
+ `uIP`           INTEGER UNSIGNED NOT NULL,
  
- `dtInteraction`
-  DATETIME
-  NOT NULL
-  DEFAULT(NOW()),
+ `dtInteraction` DATETIME         NOT NULL DEFAULT(NOW()),
 
  CONSTRAINT 
   `Session_PK` 
- PRIMARY KEY 
+ PRIMARY KEY
  (
   `vId`
  ),
  CONSTRAINT 
   `Session_User_UK` 
- UNIQUE 
+ UNIQUE
  (
   `vUserId`
  ),
  CONSTRAINT 
   `Session_User_FK` 
- FOREIGN KEY 
+ FOREIGN KEY
  (
   `vUserId`
  ) 

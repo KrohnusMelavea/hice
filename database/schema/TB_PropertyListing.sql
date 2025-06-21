@@ -1,30 +1,16 @@
 CREATE TABLE
  `DB_Hice`.`TB_PropertyListing`
 (
- `vId`
-  BINARY(16)
-  NOT NULL
-  DEFAULT(UUID_TO_BIN(UUID())),
+ `vId`          BINARY(16)          NOT NULL DEFAULT(UUID_TO_BIN(UUID())),
 
- `vPropertyId`
-  BINARY(16)
-  NOT NULL,
+ `vPropertyId`  BINARY(16)          NOT NULL,
 
- `uPriceCents`
-  INTEGER UNSIGNED
-  NULL,
- `cSaleType`
-  ENUM('s', 'r', 'a')
-  NOT NULL,
+ `uPriceCents`  INTEGER UNSIGNED        NULL,
+ `cSaleType`    ENUM('s', 'r', 'a') NOT NULL,
 
- `sDescription`
-  NVARCHAR(4000)
-  NULL,
+ `sDescription` NVARCHAR(4000)          NULL,
 
- `bIsDeleted`
-  BOOLEAN
-  NOT NULL
-  DEFAULT(0),
+ `bIsDeleted`   BOOLEAN             NOT NULL DEFAULT(0),
 
  CONSTRAINT
   `PropertyListing_PK`
