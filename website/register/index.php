@@ -38,6 +38,13 @@ echo generate_page(
    "style.css"
   ],
   [
+   "/scripts/does_password_meet_policy.js",
+   "/scripts/is_lowercase_character.js",
+   "/scripts/is_numeric_character.js",
+   "/scripts/is_uppercase_character.js",
+   "/scripts/is_special_character.js",
+   "/scripts/ORDINAL_CHARACTER.js",
+   "/scripts/validate_registration.js",
    "/scripts/navigation.js"
   ]
  ),

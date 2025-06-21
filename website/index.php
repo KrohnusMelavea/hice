@@ -9,7 +9,7 @@ require_once("util/connect_to_localhost.php");
 
 function generate_index() {
  $index_template = file_get_contents("$_SERVER[DOCUMENT_ROOT]/index.html");
- return sprintf($index_template, "hello world");
+ return sprintf($index_template, "");
 }
 
 session_start();
