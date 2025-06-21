@@ -6,11 +6,14 @@ require_once("is_uppercase_character.php");
 require_once("is_numeric_character.php");
 
 function does_password_meet_policy(string $password) {
+ error_log("CURRENTLY TESTING PASSWORD: $password");
+
  $password_length = strlen($password);
 
  if ($password_length < 16 || $password_length > 255) {
   return false;
  }
+ error_log("IM STILL HERE BTW");
 
  $index = 0;
  $contains_special_character = false;
@@ -21,6 +24,7 @@ function does_password_meet_policy(string $password) {
   $ordinal_character = ord($password[$index]);
 
   if (is_special_character($ordinal_character)) {
+   
    $contains_special_character = true;
   } else if (is_lowercase_character($ordinal_character)) {
    $contains_lowercase_character = true;

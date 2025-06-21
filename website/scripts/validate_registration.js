@@ -1,4 +1,6 @@
 function validate_registration() {
+ console.log("IM HERE BTW");
+
  const firstname = document.getElementById("registration-form-firstname-input").value.trim();
  const lastname  = document.getElementById("registration-form-lastname-input").value.trim();
  const username  = document.getElementById("registration-form-username-input").value.trim();

@@ -24,7 +24,7 @@ if (isset($_SESSION["id"])) {
  $result = validate_and_extend_session($connection, $_SESSION["id"]);
  $connection->close();
  if ($result == 0) {
-  header("Location; /account");
+  header("Location: /account");
  } else {
   unset($_SESSION["id"]);
  }
